@@ -2,7 +2,7 @@ import React from 'react';
 import TodoItem from './TodoItem';
 import './scss/TodoMain.scss';
 
-const TodoMain = ({ todoList }) => {
+const TodoMain = ({ todoList, remove }) => {
   // 프록스 distructuring {todoList}
   return (
     <ul className='todo-list'>
@@ -10,6 +10,7 @@ const TodoMain = ({ todoList }) => {
         <TodoItem
           key={todo.id}
           item={todo}
+          remove={remove}
         /> // 각각의 컴포넌트 구분할 수 있는 키값 줘야함
       ))}
     </ul>
