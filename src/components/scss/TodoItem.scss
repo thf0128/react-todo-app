@@ -1,63 +1,57 @@
 @mixin content-center {
-  // 차후 include로 불러올수 있게
-  // 중앙정렬을 위함
   display: flex;
-  justify-content: center; //jccenter
-  align-items: center; //aicenter
+  justify-content: center;
+  align-items: center;
 }
-//리스트쪽
+
 .todo-list-item {
   display: flex;
-  align-items: center; // 쓰레기통 부분 가운데 정렬
+  align-items: center;
   padding: 12px 0;
 
   &:hover .remove {
     display: block;
-  } //할일 전체영역에 hover로 휴지통 아이콘 보이게 .todo-list-ltem:hover.remove 생략
+  }
 
-  // 체크 아이콘쪽
   .check-circle {
     width: 32px;
     height: 32px;
-    border-radius: 50%; //모서리 깎기
+    border-radius: 50%;
     border: 1px solid #9da1a7;
     font-size: 24px;
     margin-right: 20px;
-    cursor: pointer; // 손가락 모양으로 클릭할 수 있게 커서
+    cursor: pointer;
 
-    @include content-center; // 위에서 선언했던 content-center 불러올수 있음
+    @include content-center;
 
     &.active {
       border: 1px solid #38d9a9;
       color: #38d9a9;
-      // 체크
     }
   }
 
-  // 글씨 쪽
   .text {
     font-size: 21px;
-    color: #495057; // 폰트 색깔
-    flex: 1; // 차지하는 공간
-    // 뒷배경 background 색깔로 범위 확인
+    color: #495057;
+    flex: 1;
+
     &.finish {
-      // &.은 현재 .text 의미 finish 클릭 시 피드백
       color: #919396;
       text-decoration: line-through;
     }
   }
 
-  //쓰레기통 아이콘 쪽
   .remove {
     font-size: 28px;
     cursor: pointer;
     color: #f51b4f;
+
     @include content-center;
 
-    display: none; // 처음에는 안보이게 숨기기 hover로 영역 나타날수 있게
+    display: none;
 
     &:hover svg {
-      opacity: 0.6; //휴지통 아이콘 hover시 투명도 변함
+      opacity: 0.6;
     }
   }
 }
