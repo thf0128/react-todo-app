@@ -26,7 +26,7 @@ const TodoTemplate = () => {
     부모 컴포넌트에서 함수를 선언(매개변수 꼭 선언) -> props로 함수를 전달
     자식 컴포넌트에서 전달받은 함수를 호출하면서 매개값으로 데이터를 전달.
   */
-  const addTodo = (todoText) => {
+  const addTodo = async (todoText) => {
     const newTodo = {
       title: todoText,
     }; // 나중에 fetch를 이용해서 백엔드에 insert 요청 보내야됨.
@@ -40,15 +40,24 @@ const TodoTemplate = () => {
     //   return [...oldTodos, newTodo];
     // });
 
-    fetch(API_BASE_URL, {
+    const res = await fetch(API_BASE_URL, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(newTodo),
-    }) //요청 보내기 인서트완료된 새 목록 오게됨
-      .then((res) => res.json())
-      .then((json) => {
-        setTodos(json.todos);
-      }); // 한 페이지에서 컴포넌트 내용 바꿔가며 렌더링 됨
+    });
+
+    const json = await res.json();
+    setTodos(json.todos);
+
+    // fetch(API_BASE_URL, {
+    //   method: 'POST',
+    //   headers: { 'content-type': 'application/json' },
+    //   body: JSON.stringify(newTodo),
+    // }) //요청 보내기 인서트완료된 새 목록 오게됨
+    //   .then((res) => res.json())
+    //   .then((json) => {
+    //     setTodos(json.todos);
+    //   }); // 한 페이지에서 컴포넌트 내용 바꿔가며 렌더링 됨
   };
 
   // 할 일 삭제 처리 함수

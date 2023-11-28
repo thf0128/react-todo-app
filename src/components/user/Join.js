@@ -46,7 +46,7 @@ const Join = () => {
   // 검증된 데이터를 각각의 상태변수에 저장해 주는 함수.
   const saveInputState = ({ key, inputValue, flag, msg }) => {
     // 입력값 세팅
-    // 패스워드 확인 입력값은 굳이 userValue 상태로 유지할 필요가 없기 떄문에
+    // 패스워드 확인 입력값은 굳이 userValue 상태로 유지할 필요가 없기 때문에
     // 임의의 문자열 'pass'를 넘기고 있습니다. -> pass가 넘어온다면 setUserValue()를 실행하지 않겠다.
     inputValue !== 'pass' &&
       setUserValue((oldVal) => {
