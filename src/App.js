@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import Join from './components/user/Join';
 import Login from './components/user/Login';
 import { AuthContextProvider } from './utils/AuthContext';
+import 'bootstrap/dist/css/bootstrap.min.css'; //실제 존재하는 파일 지목
 
 const App = () => {
   return (
